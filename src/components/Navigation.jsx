@@ -6,7 +6,6 @@ export default function Navigation() {
     <div>
         <nav>
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/product">Catalog</NavLink>
             <NavLink to="/cart">Cart</NavLink>
         </nav>
 
