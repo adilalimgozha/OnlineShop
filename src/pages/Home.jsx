@@ -1,6 +1,7 @@
 import getProducts from '../api/getProducts'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router'
 
 export default function Home() {
 
@@ -15,7 +16,7 @@ export default function Home() {
   return (
     <div>
      {allProducts.map(product =>
-      <li key={product.id}>{product.title}</li>
+      <Link to={`/product/${product.id}`} key={product.id}>{product.title}<br/></Link>
      )}
     </div>
   )
