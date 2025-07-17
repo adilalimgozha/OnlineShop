@@ -15,6 +15,7 @@ export default function Home() {
   
   return (
     <div>
+      
      {allProducts.map(product =>
       <Link to={`/product/${product.id}`} key={product.id}>{product.title}<br/></Link>
      )}
