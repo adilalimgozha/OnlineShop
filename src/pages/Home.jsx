@@ -1,7 +1,8 @@
 import getProducts from '../api/getProducts'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link } from 'react-router'
+import ProductCard from '../components/ProductCard'
+import "../styles/Home.css"
 
 export default function Home() {
 
@@ -14,10 +15,10 @@ export default function Home() {
   console.log(allProducts)
   
   return (
-    <div>
+    <div className='home'>
       
      {allProducts.map(product =>
-      <Link to={`/product/${product.id}`} key={product.id}>{product.title}<br/></Link>
+      <ProductCard key={product.id} product={product} />
      )}
     </div>
   )

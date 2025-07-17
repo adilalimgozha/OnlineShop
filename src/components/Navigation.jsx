@@ -1,4 +1,5 @@
 import { NavLink, Outlet } from "react-router"
+import '../styles/Navigation.css'
 
 
 export default function Navigation() {
