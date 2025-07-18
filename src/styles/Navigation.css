@@ -3,4 +3,10 @@ nav{
     justify-content: center;
     gap: 2em;
     font-size: 1.5em;
+    background-color: antiquewhite;
+    padding: 1em;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }

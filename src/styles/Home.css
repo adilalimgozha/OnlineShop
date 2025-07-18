@@ -4,6 +4,15 @@
     align-items: center;
 }
 
+.dropbtn{
+    width: 10em;
+    margin-right: 0.6em;
+}
+
+.dropbtn:hover{
+    cursor: pointer;
+}
+
 .dropdown-content{
     height: 0;
     overflow: hidden;
@@ -18,6 +27,7 @@
     border: rgb(177, 114, 31) solid;
     border-color: rgb(177, 114, 31);
     list-style: none;
+    z-index: 999;
 }
 
 .dropdown-element{
@@ -25,5 +35,13 @@
 }
 
 .dropdown-element:hover{
+    cursor: pointer;
+}
+
+.clearbtn{
+    width: 1.5em;
+}
+
+.clearbtn:hover{
     cursor: pointer;
 }

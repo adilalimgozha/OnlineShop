@@ -1,6 +1,7 @@
 import { useParams } from "react-router"
 import { useSelector, useDispatch } from "react-redux"
 import {addToCart, removeFromCart} from '../redux/cartSlice'
+import Comment from "../components/Comment"
 
 export default function ProductDetail() {
 
@@ -18,13 +19,33 @@ export default function ProductDetail() {
         button = <button onClick={() => dispatch(addToCart(prod))}>Add to Cart</button>
     }
 
+    console.log(prod.reviews)
     return (
         <div>
-        {prod.id} <br/>
-        {prod.title}
-        <div>
-            {button}
-        </div>
+            <div>
+            <img className='productImage' src={prod.images[0]} alt="product image" />
+            </div>
+            <div className='title'>
+                <span className='name'>{prod.title}</span>
+            </div>
+            <div className='description'>
+                {prod.description}
+            </div>
+            <div className='price'>
+                ${prod.price}
+            </div>
+            <div>
+                {button}
+            </div>
+
+            <form>
+                <input type="text" />
+                <button type="submit">Send</button>
+            </form>
+
+            <div className="reviews">
+                {prod.reviews.map((review, index) => <Comment key={index} review={review}/>)}
+            </div>
         </div>
     )
 }

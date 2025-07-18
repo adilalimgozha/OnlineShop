@@ -10,10 +10,13 @@ export default function ProductCard({product}) {
             <img className='productImage' src={product.images[0]} alt="product image" />
         </div>
         <div className='title'>
-            {product.title}
+            <span className='name'>{product.title}</span>
         </div>
         <div className='description'>
             {product.description}
+        </div>
+        <div className='price'>
+            ${product.price}
         </div>
       </Link>
     </div>

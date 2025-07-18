@@ -1,0 +1,27 @@
+.review{
+    border: red solid;
+    display: flex;
+    justify-content:space-between;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.review-block{
+    border: blue solid;
+    width: 60%;
+    margin-left: 15em;
+}
+
+.comment{
+    color: rgb(83, 75, 62);
+    font-size: 1.3em;
+}
+
+.rew{
+    margin-bottom: 0.4em;
+}
+
+.userIcon{
+    font-size: 5em;
+    border: red solid
+}

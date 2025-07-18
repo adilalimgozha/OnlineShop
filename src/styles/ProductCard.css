@@ -14,3 +14,13 @@
 .title{
     font-size: 1.5em;
 }
+
+.price{
+    margin-top: 0.4em;
+    color: rgb(55, 13, 13);
+    font-size: 1.5em;
+}
+
+.name{
+    color: rgb(115, 20, 20);
+}

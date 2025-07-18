@@ -1,8 +1,12 @@
 a.active {
-    color: red
+    color: rgb(26, 159, 174)
 }
 
 a {
     text-decoration: none;
     color: rgb(32, 47, 24);
+}
+
+.main{
+    margin-top: 5em;
 }

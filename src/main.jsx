@@ -17,16 +17,19 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Provider store={store}>
+      
+      <div className='main'>
+        <Routes>
 
-      <Routes>
-
-        <Route element={<Navigation/>}>
-          <Route index element={<Home />} />
-          <Route path='cart' element={<Cart />} />
-          <Route path='product/:prodId' element={<ProductDetail/>}></Route>
-        </Route>
-        
-      </Routes>
+          <Route element={<Navigation/>}>
+            <Route index element={<Home />} />
+            <Route path='cart' element={<Cart />} />
+            <Route path='product/:prodId' element={<ProductDetail/>}></Route>
+          </Route>
+          
+        </Routes>
+      </div>
+      
 
       </Provider>
     </BrowserRouter>
