@@ -1,36 +1,22 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
-import { BrowserRouter, Routes, Route } from 'react-router'
+import { BrowserRouter } from 'react-router'
 
 import './index.css'
 
-import Home from './pages/Home.jsx'
-import Cart from './pages/Cart.jsx'
-import Navigation from './components/Navigation.jsx'
-import ProductDetail from './pages/ProductDetail.jsx'
-
 import store from './redux/store.js'
 import { Provider } from 'react-redux'
-import Registration from './pages/Registration.jsx'
+
+
+import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Provider store={store}>
       
-      <div className='main'>
-        <Routes>
-
-          <Route element={<Navigation/>}>
-            <Route index element={<Home />} />
-            <Route path='cart' element={<Cart />} />
-            <Route path='product/:prodId' element={<ProductDetail/>}></Route>
-            <Route path='registration' element={<Registration/>}></Route>
-          </Route>
-          
-        </Routes>
-      </div>
+        <App/>
       
 
       </Provider>

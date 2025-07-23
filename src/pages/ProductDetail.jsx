@@ -9,7 +9,12 @@ export default function ProductDetail() {
     const allProducts = useSelector(state => state.products.value)
     const cart = useSelector(state => state.cart.value)
     const prod = allProducts.find(prod => prod.id === Number(prodId))
+    const reviews = useSelector(state => state.reviews.value)
     const dispatch = useDispatch()
+
+    const neededReviews = reviews.filter(review => review.productId === Number(prodId))
+
+    console.log(reviews)
 
     let button
     console.log('dsadas', cart)
@@ -19,11 +24,12 @@ export default function ProductDetail() {
         button = <button onClick={() => dispatch(addToCart(prod))}>Add to Cart</button>
     }
 
-    console.log(prod.reviews)
+
+
     return (
         <div>
             <div>
-            <img className='productImage' src={prod.images[0]} alt="product image" />
+            <img className='productImage' src={prod.images} alt="product image" />
             </div>
             <div className='title'>
                 <span className='name'>{prod.title}</span>
@@ -44,7 +50,7 @@ export default function ProductDetail() {
             </form>
 
             <div className="reviews">
-                {prod.reviews.map((review, index) => <Comment key={index} review={review}/>)}
+                {neededReviews.map((review, index) => <Comment key={index} review={review}/>)}
             </div>
         </div>
     )
