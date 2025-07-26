@@ -1,19 +1,27 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { setUser } from "../redux/userSlice"
 import {loginUser} from "../api/auth"
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router"
 import { Link } from "react-router"
+import getUsersProfiles from "../api/getUsersProfiles"
 
 
 export default function Login() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const user = useSelector(state => state.user)
+  const usersProfiles = useSelector(state => state.usersProfiles.value)
+  console.log('users Profiles', usersProfiles)
+  
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    getUsersProfiles()
+  },[])
 
   const loginHandle = async (e) => {
     e.preventDefault()

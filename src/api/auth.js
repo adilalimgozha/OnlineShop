@@ -22,7 +22,8 @@ const registerUser = async (email, password) => {
     })
 
     if (error) throw new Error(error.message)
-        console.log('registration', data)
+    const {user} = data
+    return user.id
 }
 
 export {loginUser, registerUser}

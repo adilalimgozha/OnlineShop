@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { registerUser } from "../api/auth"
 import { useNavigate } from "react-router"
+import postUserProfile from "../api/postUserProfile"
 
 
 export default function Registration() {
@@ -30,7 +31,9 @@ export default function Registration() {
     const handleSignUp = async (e, email, password) => {
         e.preventDefault()
         try{
-            await registerUser(email, password)
+            const userId = await registerUser(email, password)
+            await postUserProfile(firstName, lastName, userId)
+            console.log(userId)
             navigate('/login')
         }catch (error) {
             console.log(error)
