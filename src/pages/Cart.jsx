@@ -5,16 +5,22 @@ import { removeFromCart } from "../redux/cartSlice"
 export default function Cart() {
 
   const cart = useSelector(state => state.cart.value)
+  const user = useSelector(state => state.user)
   const dispatch = useDispatch()
 
   let content
-  if (cart.length === 0){
-    content = "Your Cart is empty"
-  }else{
-    content = cart.map(element => <div key={element.id}>
-      {element.id} {element.title}
-      <span><button onClick={() => dispatch(removeFromCart(element))}>Remove</button></span>
-      </div>)
+  if (!user.isAuthenticated){
+    content = "You have to Log In"
+  }
+  else{
+    if (cart.length === 0){
+      content = "Your Cart is empty"
+    }else{
+      content = cart.map(element => <div key={element.id}>
+        {element.id} {element.title}
+        <span><button onClick={() => dispatch(removeFromCart(element))}>Remove</button></span>
+        </div>)
+    }
   }
 
   return (

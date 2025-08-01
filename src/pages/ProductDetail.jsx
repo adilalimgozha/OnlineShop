@@ -14,6 +14,7 @@ export default function ProductDetail() {
 
     const [currentUserProfile, setCurrentUserProfile] = useState(null);
     const [prod, setProd] = useState(null)
+    const [message, setMessage] = useState(null)
 
     const [rating, setRating] = useState("")
     const [comment, setComment] = useState("")
@@ -67,19 +68,34 @@ export default function ProductDetail() {
         setRating(e.target.value)
     }
     
+    
     const handleCreateReview = async(e) => {
         e.preventDefault()
-        try{
-            const response = await postReview(comment, Number(rating), formattedDate, Number(prodId), currentUserProfile.id)
-        }catch(error){
-            console.log(error)
+        if (!user.isAuthenticated){
+            setMessage("You have to Sign In to leave a review")
+        }else{
+            try{
+                const response = await postReview(comment, Number(rating), formattedDate, Number(prodId), currentUserProfile.id)
+                setComment("")
+                setRating("")
+            }catch(error){
+                console.log(error)
+            }
         }
+        
     }
     console.log(prod)
     console.log(currentUserProfile)
+    console.log(message)
 
-    if (!currentUserProfile || !prod){
-        return <div>Loading...</div>
+    if (user.isAuthenticated ){
+        if (!currentUserProfile || !prod){
+            return <div>Loading...</div>
+        }
+    }else{
+        if (!prod){
+            return <div>Loading...</div>
+        }
     }
 
     return (
@@ -107,6 +123,9 @@ export default function ProductDetail() {
                 <input name="rating" value={rating} type="text" onChange={handleRatingChange} />
                 <button type="submit" onClick={handleCreateReview}>Send</button>
             </form>
+            <div>
+                {message}
+            </div>
 
             <div className="reviews">
                 {neededReviews.map((review, index) => <Comment key={index} review={review}/>)}

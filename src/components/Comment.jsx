@@ -1,11 +1,26 @@
+import { useState } from 'react';
 import '../styles/Comment.css'
 import { FaUser } from "react-icons/fa";
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 export default function Comment({review}) {
 
+    const [userProfile, setUserProfile] = useState()
+
     const usersProfiles = useSelector(state => state.usersProfiles.value)
-    const currentUserProfile = usersProfiles.find( userProfile => userProfile.id === review.userProfileId)
+
+    useEffect(() => {
+        if (usersProfiles.length > 0){
+            const found = usersProfiles.find( userProfile => userProfile.id === review.userProfileId)
+            setUserProfile(found)
+                
+        }
+    },[usersProfiles])
+
+    if (!userProfile){
+        return <div>Loading...</div>
+    }
 
 
   return (
@@ -15,7 +30,7 @@ export default function Comment({review}) {
                 <FaUser className='userIcon' />
             </div>
             <div className='rew name'>
-                {currentUserProfile.firstName} {currentUserProfile.lastName}
+                {userProfile.firstName} {userProfile.lastName}
             </div>
         </div>
         
