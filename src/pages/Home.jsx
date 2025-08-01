@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
 import ProductCard from '../components/ProductCard'
 import "../styles/Home.css"
-import getReviews from '../api/getReviews'
 
 export default function Home() {
 
@@ -34,7 +33,6 @@ export default function Home() {
 
   useEffect(() => {
     getProducts()
-    getReviews()
   }, [])
 
   if (category.length != 0){

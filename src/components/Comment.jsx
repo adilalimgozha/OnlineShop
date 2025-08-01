@@ -1,7 +1,12 @@
 import '../styles/Comment.css'
 import { FaUser } from "react-icons/fa";
+import { useSelector } from 'react-redux';
 
 export default function Comment({review}) {
+
+    const usersProfiles = useSelector(state => state.usersProfiles.value)
+    const currentUserProfile = usersProfiles.find( userProfile => userProfile.id === review.userProfileId)
+
 
   return (
     <div className="review">
@@ -10,7 +15,7 @@ export default function Comment({review}) {
                 <FaUser className='userIcon' />
             </div>
             <div className='rew name'>
-                {review.reviewerName}
+                {currentUserProfile.firstName} {currentUserProfile.lastName}
             </div>
         </div>
         
