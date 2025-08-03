@@ -9,4 +9,6 @@ a {
 
 .main{
     margin-top: 5em;
+    background-color: rgba(250, 235, 215, 0.388);
+    min-height: 100vh;
 }

@@ -5,12 +5,23 @@
 }
 
 .dropbtn{
-    width: 10em;
+    width: 9em;
     margin-right: 0.6em;
+    background-color: rgba(62, 23, 0, 0.575); 
+
+    border: none;
+    color: white;
+    padding: 4px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.4s;
+    border-radius: 1em;
 }
 
 .dropbtn:hover{
     cursor: pointer;
+    background-color: rgba(155, 57, 0, 0.586);
 }
 
 .dropdown-content{
@@ -38,10 +49,22 @@
     cursor: pointer;
 }
 
-.clearbtn{
+.clearbtn-img{
     width: 1.5em;
+}
+
+.clearbtn{
+    border: none;
+    color: white;
+    padding: 2px 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition-duration: 0.4s;
+    background-color: rgba(62, 23, 0, 0.575); 
 }
 
 .clearbtn:hover{
     cursor: pointer;
+    background-color: rgba(155, 57, 0, 0.586);
 }

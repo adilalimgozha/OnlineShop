@@ -6,6 +6,7 @@ import { useSelector } from "react-redux"
 import { useNavigate } from "react-router"
 import { Link } from "react-router"
 import getUsersProfiles from "../api/getUsersProfiles"
+import "../styles/Login.css"
 
 
 export default function Login() {
@@ -48,29 +49,31 @@ export default function Login() {
   
 
   return (
-    <div>
-      <div>
+    <div className="login">
+      <div className="login-embeded">
+      <h1>
         Login
-      </div>
+      </h1>
       <div>
         <form>
-          <div>
-            <label htmlFor="email" >Enter Email</label><br />
+          <div className="email">
+            <label className="email-label" htmlFor="email" >Enter Email</label><br />
             <input value={email} type="email" id="email" onChange={emailChangeHandle} placeholder="Your email" />
           </div>
-          <div>
+          <div className="password">
             <label htmlFor="password">Enter Password</label><br />
             <input value={password} type="password" id="password" onChange={passwordChangeHandle} placeholder="Your password" /><br />
           </div>
-          <button type="submit" onClick={loginHandle}>Sign In</button>
+          <button className="signin-btn" type="submit" onClick={loginHandle}>Sign In</button>
         </form>
       </div>
 
       <div>
         <span>Don't have an account?</span>
         <div>
-          <Link to='/registration'>Sign Up</Link>
+          <Link className="signup-hint" to='/registration'>Sign Up</Link>
         </div>
+      </div>
       </div>
     </div>
   )

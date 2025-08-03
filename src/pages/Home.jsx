@@ -50,7 +50,7 @@ export default function Home() {
     <div className='dropdown'>
       <div>Select Category </div>
       <button className='dropbtn' onClick={toggleDropBtn}>{categoryWord}</button>
-      <button><img className='clearbtn' src="broom.png" alt="clear button" onClick={clearCategory} /></button>
+      <button className='clearbtn' onClick={clearCategory}><img className='clearbtn-img' src="broom.png" alt="clear button" /></button>
       <div className={`dropdown-content ${isOpen ? 'open' : ""}`}>
         {uniqcategories.map((category, index) => <li key={index} className='dropdown-element' onClick={() => changeCategory(category)}>{category}</li>)}
       </div>
