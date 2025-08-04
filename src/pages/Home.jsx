@@ -68,8 +68,8 @@ export default function Home() {
         buttons.push(i)
      }
 
-  const startIndex = (currentPage - 1) * 2
-  const curretnItems = content.slice(startIndex, startIndex+2)
+  const startIndex = (currentPage - 1) * 2  // 2 is items per page
+  const curretnItems = content.slice(startIndex, startIndex+2)  // 2 is items per page
 
   console.log(currentPage)
 
@@ -93,11 +93,11 @@ export default function Home() {
      )}
 
      <div>
-      <button onClick={handlePrevPage}>Prev</button>
+      {currentPage === 1 ? "" : <button onClick={handlePrevPage}>Prev</button>}
       {buttons.map(button => 
         <button onClick={() => handlePageChange(button)} key={button}>{button}</button>
       )}
-      <button onClick={handleNextPage}>Next</button>
+      {currentPage === pages ? "" : <button onClick={handleNextPage}>Next</button>}
      </div>
     </div>
   )

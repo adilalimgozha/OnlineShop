@@ -1,12 +1,13 @@
 import { useParams } from "react-router"
 import { useSelector, useDispatch } from "react-redux"
-import {addToCart, removeFromCart} from '../redux/cartSlice'
 import Comment from "../components/Comment"
 import { useEffect, useState } from "react"
 import postReview from "../api/postReview"
 import getReviews from "../api/getReviews"
 import getProducts from "../api/getProducts"
 import getUsersProfiles from "../api/getUsersProfiles"
+import deleteCart from "../api/deleteCart"
+import postCart from '../api/postCart'
 
 export default function ProductDetail() {
 
@@ -52,12 +53,30 @@ export default function ProductDetail() {
         }
     },[allProducts])
 
+
+    const handleAddToCart = async () => {
+        try {
+            const response = await postCart(Number(prodId), currentUserProfile.id)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
+    const handleDeleteFromCart = async () => {
+        try {
+            const response = await deleteCart(Number(prodId), currentUserProfile.id)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     let button
-    console.log('dsadas', cart)
-    if (cart.some(product => product.id === Number(prodId))){
-        button = <button onClick={() => dispatch(removeFromCart(prod))}>Remove from Cart</button>
+    console.log('cart', cart)
+    if (cart.some(item => item.prod_id === Number(prodId))){
+        button = <button onClick={handleDeleteFromCart}>Remove from Cart</button>
     }else{
-        button = <button onClick={() => dispatch(addToCart(prod))}>Add to Cart</button>
+        button = <button onClick={handleAddToCart}>Add to Cart</button>
     }
 
     const handleCommentChange = (e) => {
@@ -87,6 +106,7 @@ export default function ProductDetail() {
     console.log(prod)
     console.log(currentUserProfile)
     console.log(message)
+    console.log('cart', cart)
 
     if (user.isAuthenticated ){
         if (!currentUserProfile || !prod){
@@ -108,6 +128,9 @@ export default function ProductDetail() {
             </div>
             <div className='description'>
                 {prod.description}
+            </div>
+            <div className='stock'>
+                Stock: {prod.stock}
             </div>
             <div className='price'>
                 ${prod.price}

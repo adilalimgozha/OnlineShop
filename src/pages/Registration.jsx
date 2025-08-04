@@ -2,6 +2,7 @@ import { useState } from "react"
 import { registerUser } from "../api/auth"
 import { useNavigate } from "react-router"
 import postUserProfile from "../api/postUserProfile"
+import "../styles/Registration.css"
 
 
 export default function Registration() {
@@ -41,32 +42,34 @@ export default function Registration() {
     }
 
   return (
-    <div>
-        <div>
+    <div className="registration">
+        <div className="registration-embeded">
+        <h1>
             Registration
-        </div>
+        </h1>
         <div>
             <form>
-                <div>
+                <div className="email">
                     <label htmlFor="email">Enter email</label><br />
                     <input type="email" id="email" value={email} onChange={handleEmailChange} placeholder="Enter email"/>
                 </div>
-                <div>
+                <div className="firstname">
                     <label htmlFor="firstName">Enter Firstame</label><br />
                     <input type="text" id="firstName" value={firstName} onChange={handleFirstNameChange} placeholder="Enter firstname"/>
                 </div>
-                <div>
+                <div className="lastname">
                     <label htmlFor="lastName">Enter Lastname</label><br />
                     <input type="text" id="lastName" value={lastName} onChange={handleLastNameChange} placeholder="Enter lastname"/>
                 </div>
-                <div>
+                <div className="password">
                     <label htmlFor="password">Create Password</label><br />
                     <input type="password" id="password" value={password} onChange={handlePasswordChange} placeholder="Enter password"/>
                 </div>
                 <div>
-                    <button onClick={(e) => handleSignUp(e, email, password)}>Sign Up</button>
+                    <button className="registration-btn" onClick={(e) => handleSignUp(e, email, password)}>Sign Up</button>
                 </div>
             </form>
+        </div>
         </div>
     </div>
   )
